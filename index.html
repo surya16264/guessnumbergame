@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a class="link-name" href="#">Welcome, </a>
+            <a class="link" href="#">Dashboard</a>
+            <a class="link" href="#">Home</a>
+        </nav>
+
+    </header>
+    <main>
+        <div class="name-input-container">
+            <form class="Name-form">
+                <div class="name-input-box">
+                    <label for="name-input">FirstName: </label>
+                    <input type="text" name="name-input" class="name-input text-input text1" placeholder="FirstName...">
+                </div>
+                <input type="submit" value="Submit" class="submit">
+            </form>
+
+            <div class="game-title">
+                <h1>Number Guessing Game</h1>
+                <p>Try and guess a random number between 1 to 100</p>
+                <p>You have 10 attempts to guess a number</p>
+            </div>
+
+            <form class="number-form">
+                <div>
+                    <label for="number-input">Guess a number?: </label>
+                    <input type="number" name="number-input" class="number-input" >
+                </div>
+                <input type="submit" value="Check" class="check">
+                
+            </form>
+            <div class="result">
+                <p class="last_p">Previous Guesses: <span class="guesses"></span> </p>
+                <p class="last_p">Remaining Guesses: <span class="lastResult">10</span> </p>
+                <p class="lowHi"></p>
+
+            </div>
+        </div>
+            <span class="number-span" id="zero">0</span>
+            <span class="number-span" id="one">1</span>
+            <span class="number-span" id="two">2</span>
+            <span class="number-span" id="three">3</span>
+            <span class="number-span" id="four">4</span>
+            <span class="number-span" id="five">5</span>
+            <span class="number-span" id="six">6</span>
+            <span class="number-span" id="seven">7</span>
+            <span class="number-span" id="eight">8</span>
+            <span class="number-span" id="nine">9</span>
+    </main>
+
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
