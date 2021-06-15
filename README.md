@@ -7,3 +7,4 @@ Instructions:
 3. If your number is below the correct number it will show "OOPS, Your number is too low"
 4. If your number is above the correct number it will show "OMG, Your number is too High"
 5. If your number is below the correct number it will show "OOPS, Your number is too low"
+6. If your number is equal to the correct number it will show "Congratulations, You win the game"
