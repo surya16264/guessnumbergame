@@ -1,6 +1,5 @@
 /*******************************Display player name in the title***************************/
 const submitBtn = document.querySelector(".submit");
-// console.log(submitBtn);
 const linkName = document.querySelector(".link-name");
 
 let randomValue = parseInt(Math.floor((Math.random() * 100)) + 1);
@@ -16,33 +15,27 @@ const p = document.createElement("p");
 let previousGuesses = [];
 let numGuess = 1;
 let playGame = true;
-// userInput.setAttribute('disabled','')
-
-// localStorage.removeItem('NameDetails');
 
 
-submitBtn.addEventListener('click',()=>{
+/**
+ * Submit addevent listener function
+ */
+submitBtn.addEventListener('click', () => {
     const FirstName = document.querySelector(".text1").value;
     if(FirstName == '') {
         alert("Type your name");
-        userInput.setAttribute('disabled','');
     }
-    else {
-        let storedName = {
-            FirstName : FirstName
-       }    
-       sessionStorage.setItem('NameDetails', JSON.stringify(storedName))
-
+    else {    
+       sessionStorage.setItem('NameDetails', JSON.stringify(FirstName));
+       const Names = JSON.parse(sessionStorage.getItem('NameDetails'))
+       setName(Names)
+       document.querySelector(".text1").value = '';
     }
-    
 })
 
  /**
- *      Setname funtion is to display the Names after welcome in the title
- *
- * 
+ *  Setname funtion is to display the Names after welcome in the title
  */
-
 function setName(TwoNames) {
     let nameInner = document.createElement("span");
     nameInner.innerText = TwoNames;
@@ -51,31 +44,20 @@ function setName(TwoNames) {
     return nameInner;
 }
 
-const Names = JSON.parse(sessionStorage.getItem('NameDetails'))
-let TwoNames = Names.FirstName;
-setName(TwoNames)
-// const inputBox = document.querySelector('.name-input-box');
-// inputBox.style.display = 'none';
-// const submitBox = document.querySelector('.submit');
-// submitBox.style.display = 'none';
-
-
-/*********************Random number Game logic*****************************/ 
-
+/**
+ * Check addevent listener function
+ */
 if(playGame) {
     checkBtn.addEventListener('click', (e)=> {
-    //This line is used to prevent the page to reload after clicking that check button
      e.preventDefault();
     const guess = parseInt(userInput.value);
     validateGuess(guess);
-})
-
+});
 }
 
 /**
- *      Validate funtion
- *
- * 
+ * Validate funtion
+ * @param {*} guess 
  */
  function validateGuess(guess) {
      if(isNaN(guess)) {
@@ -89,7 +71,6 @@ if(playGame) {
      }
      else {
          previousGuesses.push(guess);
-
          if(numGuess === 11) {
              displayGuesses(guess);
              displayMessage('Game Over! Random Number was' + ' '+ randomValue);
@@ -101,12 +82,11 @@ if(playGame) {
          }
      }
  }
- /**
- *      CheckGuess funtion to check and display the result
- *
- * 
+ 
+/**
+ *  CheckGuess funtion to check and display the result
+ * @param {*} guess 
  */
-
  function checkGuess(guess) {
      if(guess === randomValue) {
          displayMessage('Congratulations You win the game!!!');
@@ -122,13 +102,12 @@ if(playGame) {
          userInput.value = '';
      }
  }
-  /**
- *      DisplayGuesses funtion display the previous tried numbers
- *      and also so the ramaining chances
- *
- * 
+ 
+/**
+ * DisplayGuesses funtion display the previous tried numbers
+ *  and also so the ramaining chances
+ * @param {*} guess 
  */
-
  function displayGuesses(guess) {
      guessSlot.innerHTML += guess + " ";
      console.log('GuessSlot array' + " "+guessSlot.innerHTML)
@@ -137,23 +116,20 @@ if(playGame) {
      remaining.innerHTML = 11 - numGuess;
      console.log('Remaining chances' + " "+remaining.innerHTML)
  }
-  /**
- *     DisplayMessages funtion to display the result
- *
- * 
+ 
+/**
+ * DisplayMessages funtion to display the result
+ * @param {*} messages 
  */
-
  function displayMessage(messages) {
      lowHi.innerHTML = messages;
      console.log('LowHi message' + " "+lowHi.innerHTML)
  }
-  /**
- *      Endgame funtion is to end the game and it disabled 
- *      the input text box
- *
- * 
- */
 
+ /**
+  * Endgame funtion is to end the game and it disabled 
+  * the input text box
+  */
  function endGame() {
      userInput.value = '' ;
     userInput.setAttribute('disabled', '');
@@ -163,13 +139,11 @@ if(playGame) {
      playGame = false;
      newGame();
  }
-  /**
- *      Newgame funtion is to start the new game by 
- *      clicking on the start new game
- *
- * 
- */
-
+ 
+ /**
+  * Newgame funtion is to start the new game by 
+  * clicking on the start new game
+  */
  function newGame() {
      const newGameButton = document.querySelector('#newGame');
      newGameButton.addEventListener('click', ()=>{
@@ -183,18 +157,7 @@ if(playGame) {
          startOver.removeChild(p);
          playGame = true;
         sessionStorage.removeItem('NameDetails');
-        // inputBox.style.display = 'block';
-        // submitBox.style.display = 'block';
          const name = document.querySelector('.name');
          name.style.display = 'none';
      })
 }
-
-
-    
-
-
-
-
-
-
